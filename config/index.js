@@ -43,7 +43,7 @@ const config = {
     }
   },
   h5: {
-    publicPath: '/',
+    publicPath: '/richtext-editor',
     staticDirectory: 'static',
     postcss: {
       autoprefixer: {
