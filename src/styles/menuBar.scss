@@ -1,0 +1,41 @@
+.tiptap-menu-bar {
+  taro-button-core {
+    margin-top: 10px;
+
+    &.is-active {
+      background-color: #ddd;
+    }
+  }
+}
+
+.editor-card {
+  padding: 10px;
+}
+
+.react-renderer {
+  .yy-components * {
+    pointer-events: none;
+  }
+}
+#app-modal {
+  taro-button-core+taro-button-core {
+    margin: 0;
+  }
+  .adm-text-area-wrapper {
+    background-color: #fff !important;
+  }
+}
+
+@import './default.scss';
+@import './increase.scss';
+@import './ads.scss';
+@import url('//at.alicdn.com/t/font_2723953_fua1vuwkr1k.css');
+
+
+.react-codemirror2,
+.CodeMirror.cm-s-material {
+  height: 100%;
+}
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
+@import "~taro-ui/dist/style/components/modal.scss";

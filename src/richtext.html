@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>${title}</title>
+  <meta name='description' content="${desc}">
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1,shrink-to-fit=no,viewport-fit=cover"
+  />
+  <meta name="theme-color" content="#000000" />
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+    #element {
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: 768px) {
+      #element {
+        max-width: 800px;
+        height: 100%;
+        margin: 0 auto;
+        /* border: 1px solid #eee; */
+      }
+    }
+
+    *:focus {
+      outline: 0;
+    }
+
+    ul, ol {
+  padding: 0 1rem;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+}
+code {
+  background-color: rgba(97, 97, 97, 0.1);
+  color: #616161;
+}
+pre {
+  background: #0D0D0D;
+  color: #FFF;
+  font-family: 'JetBrainsMono', monospace;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.3rem;
+}
+pre code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.6rem;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(13, 13, 13, 0.1);
+}
+hr {
+  border: none;
+  border-top: 2px solid rgba(13, 13, 13, 0.1);
+  margin: 1rem 0;
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+table td, table th {
+  min-width: 1em;
+  border: 2px solid #ced4da;
+  padding: 3px 5px;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: relative;
+}
+table td > *, table th > * {
+  margin-bottom: 0;
+}
+table th {
+  font-weight: bold;
+  text-align: left;
+  background-color: #f1f3f5;
+}
+table .selectedCell:after {
+  z-index: 2;
+  position: absolute;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(200, 200, 255, 0.4);
+}
+table .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: -2px;
+  width: 4px;
+  background-color: #adf;
+}
+ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+ul[data-type="taskList"] li {
+  display: flex;
+  align-items: center;
+}
+ul[data-type="taskList"] li > label {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+}
+ul[data-type="taskList"] input[type="checkbox"] {
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div id="element"></div>
+  <script type="module">
+    import { Editor } from 'https://cdn.skypack.dev/@tiptap/core?min'
+    import StarterKit from 'https://cdn.skypack.dev/@tiptap/starter-kit?min'
+    import Document from 'https://cdn.skypack.dev/@tiptap/extension-document?min'
+    import Highlight from 'https://cdn.skypack.dev/@tiptap/extension-highlight?min';
+    import Typography from 'https://cdn.skypack.dev/@tiptap/extension-typography?min';
+    import Table from 'https://cdn.skypack.dev/@tiptap/extension-table?min';
+    import TextAlign from 'https://cdn.skypack.dev/@tiptap/extension-text-align?min';
+    import TableCell from 'https://cdn.skypack.dev/@tiptap/extension-table-cell?min';
+    import TableRow from 'https://cdn.skypack.dev/@tiptap/extension-table-row?min';
+    import TableHeader from 'https://cdn.skypack.dev/@tiptap/extension-table-header?min';
+    import Link from 'https://cdn.skypack.dev/@tiptap/extension-link';
+    // import Iframe from 'https://cdn.skypack.dev/@tiptap/extention-iframe?min';
+    import TextStyle from 'https://cdn.skypack.dev/@tiptap/extension-text-style';
+    import Dropcursor from 'https://cdn.skypack.dev/@tiptap/extension-dropcursor'
+    import Image from 'https://cdn.skypack.dev/@tiptap/extension-image'
+
+    import 'https://cdn.skypack.dev/@ysyp/ui@v0.3.2'
+    const editor = new Editor({
+      element: document.getElementById('element'),
+      extensions: [
+        StarterKit,
+        Document,
+        Highlight,
+        Typography,
+        Image,
+        Table.configure({
+            resizable: true,
+        }),
+        TextAlign.configure({
+            types: ['heading', 'paragraph'],
+        }),
+        TableRow,
+        TableCell,
+        TableHeader,
+        // TaskList,
+        Link,
+        // Iframe,
+        // Video,
+        // FontColor,
+        TextStyle,
+        // FontFamily,
+        Dropcursor,
+        // TaskItem,
+        // CustomTaskItem,
+        // AdsWraper,
+        // CodeBlock,
+
+        // IncreaseComponent,
+        // YYTitleExtension,
+        // YYSwiperExtension,
+
+        // WebTitle,
+        // WebSwiper,
+
+        // EventHandler
+      ],
+      content: '<h2 style="text-align: center">头部一行无法删除</h2><ol><li><p>选择元素 右侧出现可配置项目</p></li><li><p>最好收集所有的元素做成可配置</p></li><li><p>渲染的时候需要能生成 静态 HTML</p></li><li><p>需要研究一下 missr 或者再创造出一套新的 静态文件生成</p></li></ol><img src="http://file.yuansheng.com/static/memo/weappfile/file-1631255466563" alt=""><yytitlecomponent title="商品橱窗123" fontsize="20px" padding="20px 5px" onclick="function onClick() {}"></yytitlecomponent><yyswipercomponent vertical="false" items="[{&quot;url&quot;:&quot;https://yuanshengyoupin.com123456&quot;,&quot;image&quot;:&quot;http://localhost:3333/static/memo/files/hb10.png&quot;,&quot;imageStyle&quot;:{}},{&quot;url&quot;:&quot;https://yuanshengyoupin.com&quot;,&quot;image&quot;:&quot;http://localhost:3333/static/memo/files/hb10.png&quot;,&quot;imageStyle&quot;:{}},{&quot;url&quot;:&quot;https://yuanshengyoupin.com&quot;,&quot;image&quot;:&quot;http://localhost:3333/static/memo/files/hb10.png&quot;,&quot;imageStyle&quot;:{}}]"></yyswipercomponent>',
+    })
+  </script>
+</body>
+</html>
