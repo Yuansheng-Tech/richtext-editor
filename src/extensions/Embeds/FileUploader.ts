@@ -80,10 +80,13 @@ export const File = Node.create({
 
   addInputRules () {
     return [
-      nodeInputRule(inputRegex, this.type, (match) => {
-        const [, id, name] = match
-
-        return { id, name }
+      nodeInputRule({
+        find: inputRegex,
+        type: this.type,
+        getAttributes: (match) => {
+          const [, id, name] = match
+          return { id, name }
+        }
       })
     ]
   }

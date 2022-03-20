@@ -46,3 +46,25 @@ export const ModalConfig = (props) => {
   </AtModal>
   </ModalController>)
 }
+
+export const YYModal = props => {
+  const {
+    isOpened,
+    // toggleModal,
+    title,
+    children
+  } = props;
+
+  return (<ModalController>
+    <AtModal isOpened={isOpened} className='edit-modal-config'>
+    <AtModalHeader>{title}</AtModalHeader>
+    <AtModalContent>
+      {children}
+    </AtModalContent>
+    {/* <AtModalAction>
+      <Button type='default' onClick={() => toggleModal(false)}>取消</Button>
+      <Button type='primary' onClick={() => toggleModal(false)}>确定</Button>
+    </AtModalAction> */}
+  </AtModal>
+  </ModalController>) 
+}

@@ -40,7 +40,7 @@ import { IncreaseComponent } from './components/Increase/extension'
 import { MenuBar } from './MenuBar';
 import AdsWraper from './components/common/ads-extension';
 import { YYSwiperExtension, YYTitleExtension } from './components/yyui/extension';
-import { EventHandler } from './components/eventHandler';
+// import { EventHandler } from './components/eventHandler';
 
 
 export const tpl = `
@@ -121,7 +121,6 @@ export const useRichTextEditor = (props: {
       Document,
       Highlight,
       Typography,
-      Image,
       Table.configure({
           resizable: true,
       }),
@@ -131,6 +130,7 @@ export const useRichTextEditor = (props: {
       TableRow,
       TableCell,
       TableHeader,
+      Image,
       TaskList,
       Link,
       Iframe,
@@ -149,8 +149,13 @@ export const useRichTextEditor = (props: {
       YYTitleExtension,
       YYSwiperExtension,
 
-      EventHandler
+      // EventHandler
     ],
+    editorProps: {
+      attributes: {
+        // class: 'md:prose md:prose-sm prose-sm m-5 focus:outline-none',
+      },
+    },
     editable: contenteditable,
     content: content,
     // onSelectionUpdate({ editor }) {
@@ -189,8 +194,8 @@ export const RichTextEditor = (props: {
   
   return (
     <>
-      {menuBarShow && <View className="richtext-menu-bar"><MenuBar editor={editor}/></View> }
-      <View className="richtext-content">
+      {menuBarShow && <View className='richtext-menu-bar'><MenuBar editor={editor} /></View> }
+      <View className='richtext-content'>
         {editcode && <CodeMirror
           value={content}
           // value={prettier.format(content, { parser: "html" })}
@@ -200,11 +205,11 @@ export const RichTextEditor = (props: {
             lineNumbers: true
           }}
           onBeforeChange={(editors, data, value) => {
-            // console.log('editor, data, value', editor, data, value)
+            console.log('editor onBeforeChange, data, value', editor, data, value)
             setContent(value)
           }}
           onChange={(editors, data, value) => {
-            // console.log('editor, data, value', editor, data, value)
+            console.log('editor onChange, data, value', editor, data, value)
             // setContent(value)
           }}
         />}

@@ -45,9 +45,13 @@ export const FontSize = Extension.create<FontSizeOptions>({
             },
             parseHTML: element => {
               console.log('FOO', element.style)
-              return {
-                fontSize: element.style.fontSize.replace(/['"]+/g, ''),
-              }
+              return [
+                {
+                  style: 'font-size',
+                  getAttrs: value => value.replace(/['"]+/g, ''),
+                }
+                // fontSize: element.style.fontSize.replace(/['"]+/g, ''),
+              ]
             },
           },
         },

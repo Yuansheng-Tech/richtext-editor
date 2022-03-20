@@ -13,6 +13,7 @@ declare module '@tiptap/core' {
   }
 }
 
+// https://github.com/ueberdosis/tiptap/pull/1997
 export const inputRegex = /!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\)/
 export const Video = Node.create({
   name: 'video',
@@ -79,10 +80,14 @@ export const Video = Node.create({
 
   addInputRules () {
     return [
-      nodeInputRule(inputRegex, this.type, (match) => {
-        const [, src, id, type] = match
-
-        return { src, id, type }
+      
+      nodeInputRule({
+        find: inputRegex,
+        type: this.type,
+        getAttributes: (match) => {
+          const [, src, id, type] = match
+          return { src, id, type }
+        }
       })
     ]
   }

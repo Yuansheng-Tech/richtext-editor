@@ -45,9 +45,13 @@ export const FontColor = Extension.create<FontColorOptions>({
             },
             parseHTML: element => {
               console.log('FOO', element.style)
-              return {
-                fontColor: element.style.color.replace(/['"]+/g, ''),
-              }
+              return [
+                {
+                  style: 'font-color',
+                  getAttrs: value => value.replace(/['"]+/g, ''),
+                }
+                // fontColor: element.style.color.replace(/['"]+/g, ''),
+              ]
             },
           },
         },

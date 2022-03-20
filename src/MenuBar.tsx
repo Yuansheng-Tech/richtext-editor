@@ -290,7 +290,7 @@ export const UploadImage = ({ editor }) => {
         const tempFilePaths = ress.tempFilePaths
         console.log('tempFilePaths', tempFilePaths);
         Taro.uploadFile({
-          url: 'http://api.yuansheng.com/api/file/upload', //仅为示例，非真实的接口地址
+          url: 'http://api.yuanshengyoupin.com/api/file/upload', //仅为示例，非真实的接口地址
           filePath: tempFilePaths[0],
           name: 'file',
           header: { 
@@ -398,7 +398,7 @@ export const FontColor = ({ editor }) => {
       purple
     </Button>
     <Button size='mini' type='default'
-      style='color:red;'
+      style='color: red;'
       onClick={() => editor.chain().focus().setFontColor('#F98181').run()}
       className={classnames({ 'is-active': editor.isActive('textStyle', { color: '#F98181' }) })}
     >
@@ -481,7 +481,7 @@ export const UploadVideo = ({ editor }) => {
         const tempFilePath = re?.tempFilePath
         console.log('tempFilePath', tempFilePath);
         Taro.uploadFile({
-          url: 'http://api.yuansheng.com/api/file/upload', //仅为示例，非真实的接口地址
+          url: 'http://api.yuanshengyoupin.com/api/file/upload', //仅为示例，非真实的接口地址
           filePath: tempFilePath,
           name: 'file',
           header: { 
